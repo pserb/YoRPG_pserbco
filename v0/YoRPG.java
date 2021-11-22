@@ -176,7 +176,7 @@ public class YoRPG {
         // if a monster is slain, protagonist health should increase:
         // double their health if they beat a monster
         pat.health += (int)(pat.health * 0.5);
-        System.out.println(pat.getName() + "'s health has doubled for slaying the monster! Their health is now " + pat.health + "!");
+        System.out.println(pat.getName() + "'s health has increased for slaying the monster! Their health is now " + pat.health + "!");
         //end MY ADDITION
 // ====================================******========================================= //
 
