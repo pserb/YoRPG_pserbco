@@ -1,4 +1,4 @@
-public class Protagonist extends Character {
+public class Protagonist {
     String name;
     int health;
     int damageDealt;

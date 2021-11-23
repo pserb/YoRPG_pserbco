@@ -1,4 +1,4 @@
-public class Monster extends Character {
+public class Monster {
     String name;
     int health;
     int damageDealt;

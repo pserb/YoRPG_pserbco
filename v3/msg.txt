@@ -1,0 +1,6 @@
+I decided to move what we did in class to v2 because he wants us to let the errors guide us, 
+so I'll go in order on the sheet - Andrew 11/22 8:14PM
+
+
+
+Finished but only issue is that Protag damage is not random always the same for 2. 
