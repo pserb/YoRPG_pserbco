@@ -1,17 +1,14 @@
 public class Protagonist extends Character {
 
-    String name;
+    protected String name;
 
     
     // CONSTRUCTORS
     public Protagonist() {
         health = 125;
-        strength = 100;
+        strength = (int) ((Math.random()*50)+75); // [75,125)
         defense = 40;
         attackRating = 0.4;
-
-        //Only in protag class
-        boolean doubleDmg = false;
     }
 
     public Protagonist(String newName) {
@@ -30,6 +27,8 @@ public class Protagonist extends Character {
         defense = 40;
     }
 
+
+    // ACCESSOR
     public String getName() {
         return name;
     }
