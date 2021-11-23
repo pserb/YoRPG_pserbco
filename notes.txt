@@ -1,1 +1,9 @@
 Notes of anything notable:
+
+
+
+Java compiled 
+```public class Protagonist extends Character```
+and 
+```public class Monster extends Character```
+even when Character class was empty. Only the file existed. And worked perfectly fine.
