@@ -6,6 +6,7 @@ public class Jester extends Protagonist {
     attackRating = 0.61;
   }
   public Jester(String newName) {
+    this();
 		name = newName;
 	}
   public static String about() {

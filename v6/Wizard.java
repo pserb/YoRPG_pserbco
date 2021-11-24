@@ -6,6 +6,7 @@ public class Wizard extends Protagonist {
 		attackRating = 0.5;
 	}
 	public Wizard(String newName) {
+		this();
 		name = newName;
 	}
 	public static String about() {

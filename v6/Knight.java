@@ -6,6 +6,7 @@ public class Knight extends Protagonist {
 		attackRating = 0.35;
 	}
 	public Knight(String newName) {
+		this();
 		name = newName;
 	}
 	public static String about() {
