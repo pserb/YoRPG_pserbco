@@ -5,6 +5,7 @@ public class Protagonist extends Character {
 
     // CONSTRUCTORS
     public Protagonist() {
+        health = 100;
     }
 
     public Protagonist(String newName) {
