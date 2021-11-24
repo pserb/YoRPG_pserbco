@@ -1,9 +1,20 @@
 Notes of anything notable:
 
+- When making monster subclasses, we ended up not needing anything in the monster
+constructor (so far)- the only important implication is that they are all monsters,
+as opposed to just normal characters. This is because being a subclass of class
+monster will have implications in the YoRPG file itself.
+- In order to store variables when making the specialize attack method, we used
+a temporary storage variable, then modified the original attackRating and defense
+values, applied the attack method, and then returned the attackRating and defense
+values to their original values from the temporary storage values.
+- You can take any protected variable from a superclass and modify it in a subclass,
+but you cannot take a variable from a subclass and modify it in the superclass.
 
 
-Java compiled 
+
+Java compiled
 ```public class Protagonist extends Character```
-and 
+and
 ```public class Monster extends Character```
 even when Character class was empty. Only the file existed. And worked perfectly fine.
