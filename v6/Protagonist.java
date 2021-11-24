@@ -4,7 +4,7 @@ public class Protagonist extends Character {
 
 
     // CONSTRUCTORS
-    public Protagonist() { // since the normal attributes are not the same for each protagonist, we don't need anything here.
+    public Protagonist() {
     }
 
     public Protagonist(String newName) {
