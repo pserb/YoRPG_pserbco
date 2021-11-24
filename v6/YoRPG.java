@@ -10,7 +10,6 @@
  * The only modification you should make to this driver file is moving comment bar down in main method, and filling in DISCO/QCC
  * (If you feel other changes are merited, note what and why, so that we may discuss on the 'morrow.)
  * 
- * Faiza Was Here and Helped and was Awesome :)))))))
  * 
  * DISCO:
  *
@@ -39,6 +38,8 @@ public class YoRPG {
   private InputStreamReader isr;
   private BufferedReader in;
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  private int protag;
 
 
   // ~~~~~~~~~~ DEFAULT CONSTRUCTOR ~~~~~~~~~~~
@@ -78,6 +79,19 @@ public class YoRPG {
     }
     catch ( IOException e ) { }
 
+    s = "\nChoose your character class: \n";
+    s += "\t1: Knight\n";
+    s += "\t2: Wizard\n";
+    s += "\t3: Jester\n";
+    s += "Selection: ";
+    System.out.print( s );
+
+    try {
+	    protag = Integer.parseInt( in.readLine() );
+    }
+    catch ( IOException e ) { }
+
+
     s = "Intrepid protagonist, what doth thy call thyself? (State your name): ";
     System.out.print( s );
 
@@ -86,8 +100,20 @@ public class YoRPG {
     }
     catch ( IOException e ) { }
 
-    //instantiate the player's character
-    pat = new Protagonist( name );
+    //instantiate the player's character BASED ON PROTAG SELECT
+    if (protag == 1) {
+      pat = new Knight( name );
+      // System.out.println(pat.about());
+    }
+    if (protag == 2) {
+      pat = new Wizard( name );
+      // System.out.println(pat.about());
+    }
+    if (protag == 3) {
+      pat = new Jester( name );
+      // System.out.println(pat.about());
+    }
+    // pat = new Protagonist( name );
 
   }//end newGame()
 
@@ -170,8 +196,7 @@ public class YoRPG {
                          ,((,-,__\  '", __\_/. __,'
                                        '"./_._._-'
 */
-
-        // MY (and FAIZA'S (from dojo!)) ADDITION:
+        // ADDITION:
 
         // if a monster is slain, protagonist health should increase:
         // double their health if they beat a monster
