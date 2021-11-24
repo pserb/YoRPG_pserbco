@@ -14,6 +14,7 @@ public class Protagonist extends Character {
     }
 
     public void specialize() {
+        System.out.println("SPECAIL ATTK RATING:" + attackRating);
         attackRating = 1.6*attackRating;
         defense = defense - 15;
         storage1 = 0.625*attackRating;
@@ -22,6 +23,7 @@ public class Protagonist extends Character {
 
 
     public void normalize() {
+        System.out.println("NORML ATTK RATING:" + attackRating);
         storage1 = attackRating;
         storage2 = defense;
     }

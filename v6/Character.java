@@ -41,6 +41,7 @@ public class Character {
 		defense = storage2;
 
 		c.lowerHP(damage);
+
 		return damage;
 	}
 }
