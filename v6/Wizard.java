@@ -5,6 +5,10 @@ public class Wizard extends Protagonist {
 		strength = (int) ((Math.random()*50)+90); // [90,140)
 		attackRating = 0.5;
 	}
+	public Wizard(String newName) {
+		name = newName;
+	}
 	public static String about() {
-		return "the Wizard has the lowest defense stats, but has the strongest attacks of the three heroes."
+		return "the Wizard has the lowest defense stats, but has the strongest attacks of the three heroes.";
+	}
 }

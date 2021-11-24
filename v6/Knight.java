@@ -5,6 +5,9 @@ public class Knight extends Protagonist {
 		strength = (int) ((Math.random()*50)+70); // [90,140)
 		attackRating = 0.35;
 	}
+	public Knight(String newName) {
+		name = newName;
+	}
 	public static String about() {
 		return "the knight has the highest defense rating and average base attack stats.";
 	}
