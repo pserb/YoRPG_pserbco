@@ -1,0 +1,10 @@
+Most importantly changed monster selection:
+
+Added a random number generator to randomly assign monsters to different sub classes each turn. No idea if this implementation works when protag lasts more than one round because monsters extremely powerful.
+
+Also:
+No longer displays negative health
+
+Tweaked the stats of the entities, so protagonist has a chance to win:
+Monsters generally have more health but do less damage and have less defense. 
+Protagonists generally have higher more stable damage ranges but low attack ratings.

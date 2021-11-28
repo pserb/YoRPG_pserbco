@@ -102,17 +102,16 @@ public class YoRPG {
     //OUR DRIVER MODS - instantiate the player's character BASED ON PROTAG SELECT
     if (protag == 1) {
       pat = new Knight( name );
-      System.out.println(((Knight)pat).about());
+      System.out.println("\n" + ((Knight)pat).about());
     }
     if (protag == 2) {
       pat = new Wizard( name );
-      System.out.println(((Wizard)pat).about());
+      System.out.println("\n" + ((Wizard)pat).about());
     }
     if (protag == 3) {
       pat = new Jester( name );
-      System.out.println(((Jester)pat).about());
+      System.out.println("\n" + ((Jester)pat).about());
     }
-    // pat = new Protagonist( name );
 
   }//end newGame()
 
@@ -132,7 +131,25 @@ public class YoRPG {
     else {
 	    System.out.println( "\nLo, yonder monster approacheth!" );
 
-	    smaug = new Monster();
+      // OUR DRIVER MODS - Randomly assigns smaug to a specific monster subclass
+      int monstPicker = (int) (Math.random()*3);
+
+      if (monstPicker == 0) {
+        smaug = new Goblin();
+      } 
+      else if (monstPicker == 1 ) {
+        smaug = new SmallDragon();
+      }
+      else if (monstPicker == 2) {
+        smaug = new Witch();
+      }
+      else {
+        smaug = new Monster();
+      }
+
+      System.out.println("\nYour foe is a " + smaug.typeMonst());
+      System.out.println(smaug.about());
+
 
 	    while( smaug.isAlive() && pat.isAlive() ) {
 
@@ -156,11 +173,15 @@ public class YoRPG {
 
         System.out.println( "\n" + pat.getName() + " dealt " + d1 +
                             " points of damage.");
-        System.out.println("Ye Olde Monster's health is now " + smaug.health + "!");
+        if (smaug.isAlive()) {
+          System.out.println("Ye Olde Monster's health is now " + smaug.health + "!");
+        }
 
         System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() +
                             " for " + d2 + " points of damage.");
-        System.out.println(pat.getName() + "'s health is now " + pat.health + "!");
+        if ( pat.isAlive() ) {
+          System.out.println(pat.getName() + "'s health is now " + pat.health + "!");
+        }
 	    }//end while
 
 	    //option 1: you & the monster perish
