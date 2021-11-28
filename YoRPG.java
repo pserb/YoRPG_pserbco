@@ -2,20 +2,19 @@
  * class YoRPG -- Driver file for Ye Olde Role Playing Game.
  * Simulates monster encounters of a wandering adventurer.
  * Required classes: Protagonist, Monster
- * 
+ *
  * USAGE:
  * Compile. Note messages generated.
  * Devise a plan of attack with your trio.
  * Code incrementally, testing each bit of new functionality as you go.
  * The only modification you should make to this driver file is moving comment bar down in main method, and filling in DISCO/QCC
  * (If you feel other changes are merited, note what and why, so that we may discuss on the 'morrow.)
- * 
- * Faiza Was Here and Helped and was Awesome :)))))))
- * 
+ *
+ *
  * DISCO:
  *
  * QCC:
- * 
+ *
  **********************************************/
 
 import java.io.*;
@@ -29,8 +28,8 @@ public class YoRPG {
   public final static int MAX_ENCOUNTERS = 5;
 
   //each round, a Protagonist and a Monster will be instantiated...
-  private Protagonist pat;   
-  private Monster smaug;     
+  private Protagonist pat;
+  private Monster smaug;
 
   private int moveCount;
   private boolean gameOver;
@@ -39,6 +38,8 @@ public class YoRPG {
   private InputStreamReader isr;
   private BufferedReader in;
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  private int protag;
 
 
   // ~~~~~~~~~~ DEFAULT CONSTRUCTOR ~~~~~~~~~~~
@@ -52,13 +53,13 @@ public class YoRPG {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-  
+
   // ~~~~~~~~~~~~~~ METHODS ~~~~~~~~~~~~~~~~~~~
 
   /*=============================================
     void newGame() -- gathers info to begin a new game
-    pre:  
-    post: according to user input, modifies instance var for difficulty 
+    pre:
+    post: according to user input, modifies instance var for difficulty
     and instantiates a Protagonist
     =============================================*/
   public void newGame() {
@@ -78,16 +79,39 @@ public class YoRPG {
     }
     catch ( IOException e ) { }
 
-    s = "Intrepid protagonist, what doth thy call thyself? (State your name): ";
+    s = "\nIntrepid protagonist, what doth thy call thyself? (State your name): ";
     System.out.print( s );
 
     try {
-	    name = in.readLine();
+      name = in.readLine();
     }
     catch ( IOException e ) { }
 
-    //instantiate the player's character
-    pat = new Protagonist( name );
+    s = "\nChoose your character class: \n";
+    s += "\t1: Knight\n";
+    s += "\t2: Wizard\n";
+    s += "\t3: Jester\n";
+    s += "Selection: ";
+    System.out.print( s );
+
+    try {
+	    protag = Integer.parseInt( in.readLine() );
+    }
+    catch ( IOException e ) { }
+
+    //OUR DRIVER MODS - instantiate the player's character BASED ON PROTAG SELECT
+    if (protag == 1) {
+      pat = new Knight( name );
+      System.out.println("\n" + ((Knight)pat).about());
+    }
+    if (protag == 2) {
+      pat = new Wizard( name );
+      System.out.println("\n" + ((Wizard)pat).about());
+    }
+    if (protag == 3) {
+      pat = new Jester( name );
+      System.out.println("\n" + ((Jester)pat).about());
+    }
 
   }//end newGame()
 
@@ -107,7 +131,25 @@ public class YoRPG {
     else {
 	    System.out.println( "\nLo, yonder monster approacheth!" );
 
-	    smaug = new Monster();
+      // OUR DRIVER MODS - Randomly assigns smaug to a specific monster subclass
+      int monstPicker = (int) (Math.random()*3);
+
+      if (monstPicker == 0) {
+        smaug = new Goblin();
+      } 
+      else if (monstPicker == 1 ) {
+        smaug = new SmallDragon();
+      }
+      else if (monstPicker == 2) {
+        smaug = new Witch();
+      }
+      else {
+        smaug = new Monster();
+      }
+
+      System.out.println("\nYour foe is a " + smaug.typeMonst());
+      System.out.println(smaug.about());
+
 
 	    while( smaug.isAlive() && pat.isAlive() ) {
 
@@ -131,16 +173,20 @@ public class YoRPG {
 
         System.out.println( "\n" + pat.getName() + " dealt " + d1 +
                             " points of damage.");
-        System.out.println("Ye Olde Monster's health is now " + smaug.health + "!");
+        if (smaug.isAlive()) {
+          System.out.println("Ye Olde Monster's health is now " + smaug.health + "!");
+        }
 
         System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() +
                             " for " + d2 + " points of damage.");
-        System.out.println(pat.getName() + "'s health is now " + pat.health + "!");
+        if ( pat.isAlive() ) {
+          System.out.println(pat.getName() + "'s health is now " + pat.health + "!");
+        }
 	    }//end while
 
 	    //option 1: you & the monster perish
 	    if ( !smaug.isAlive() && !pat.isAlive() ) {
-        System.out.println( "'Twas an epic battle, to be sure... " + 
+        System.out.println( "'Twas an epic battle, to be sure... " +
                             "You cut ye olde monster down, but " +
                             "with its dying breath ye olde monster. " +
                             "laid a fatal blow upon thy skull." );
@@ -170,8 +216,7 @@ public class YoRPG {
                          ,((,-,__\  '", __\_/. __,'
                                        '"./_._._-'
 */
-
-        // MY (and FAIZA'S (from dojo!)) ADDITION:
+        // ADDITION:
 
         // if a monster is slain, protagonist health should increase:
         // double their health if they beat a monster
@@ -195,7 +240,7 @@ public class YoRPG {
 
 
   public static void main( String[] args ) {
-    //As usual, move the begin-comment bar down as you progressively 
+    //As usual, move the begin-comment bar down as you progressively
     //test each new bit of functionality...
 
     //================================================

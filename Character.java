@@ -6,6 +6,8 @@ public class Character {
 	protected int strength;
 	protected int defense;
 	protected double attackRating;
+	protected double storage1;
+	protected int storage2; // I need these 2 variables in order to make a generalized specialize method.
 
 	// ACCESSORS
 	public boolean isAlive() {
@@ -35,7 +37,11 @@ public class Character {
 			damage = 0;
 		}
 
+		attackRating = storage1;
+		defense = storage2;
+
 		c.lowerHP(damage);
+
 		return damage;
 	}
 }

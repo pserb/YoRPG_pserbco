@@ -2,13 +2,10 @@ public class Protagonist extends Character {
 
     protected String name;
 
-    
-    // CONSTRUCTORS
+
+    //CONSTRUCTORS
     public Protagonist() {
         health = 125;
-        strength = (int) ((Math.random()*50)+75); // [75,125)
-        defense = 40;
-        attackRating = 0.4;
     }
 
     public Protagonist(String newName) {
@@ -17,14 +14,16 @@ public class Protagonist extends Character {
     }
 
     public void specialize() {
-        attackRating = 0.75;
-        defense = 20;
+        attackRating = 1.6*attackRating;
+        defense = defense - 15;
+        storage1 = 0.625*attackRating;
+        storage2 = defense + 15;
     }
 
 
     public void normalize() {
-        attackRating = .4;
-        defense = 40;
+        storage1 = attackRating;
+        storage2 = defense;
     }
 
 
