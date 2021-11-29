@@ -1,4 +1,6 @@
-# TNPG - Pserb &amp; Co
+# YoRPG_pserbco
+
+### TNPG - Pserb &amp; Co
 Paul Serbanescu, Joseph Othman, Andrew Piatetsky
 
 ## Explanation of classes
